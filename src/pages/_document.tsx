@@ -1,13 +1,45 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript, DocumentProps } from "next/document";
+import { dsfrDocumentApi } from "./_app";
+import { Header } from "@codegouvfr/react-dsfr/Header";
+import { Badge } from "@codegouvfr/react-dsfr/Badge";
+const { getColorSchemeHtmlAttributes, augmentDocumentForDsfr } =
+  dsfrDocumentApi;
 
-export default function Document() {
+export default function Document(props: DocumentProps) {
   return (
-    <Html lang="en">
+    <Html {...getColorSchemeHtmlAttributes(props)}>
       <Head />
       <body>
-        <Main />
+        <Header
+          brandTop={
+            <>
+              INTITULE
+              <br />
+              OFFICIEL
+            </>
+          }
+          homeLinkProps={{
+            href: "/",
+            title:
+              "Accueil - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)",
+          }}
+          id="fr-header-simple-header-with-service-title-and-tagline"
+          serviceTitle={
+            <>
+              Proconnect / exemple{" "}
+              <Badge as="span" noIcon severity="success">
+                Beta
+              </Badge>
+            </>
+          }
+        />
+        <div className="fr-container">
+          <Main />
+        </div>
         <NextScript />
       </body>
     </Html>
   );
 }
+
+augmentDocumentForDsfr(Document);
