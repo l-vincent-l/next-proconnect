@@ -14,8 +14,8 @@ export default function LoginButton() {
   }
   return (
     <>
-      Not signed in <br />
-      <ProConnectButton onClick={() => signIn()} />
+      Se connecter <br />
+      <ProConnectButton onClick={() => signIn("pro-connect")} />
     </>
   );
 }
