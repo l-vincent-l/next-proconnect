@@ -13,9 +13,9 @@ export default function Document(props: DocumentProps) {
         <Header
           brandTop={
             <>
-              INTITULE
+              MON COMPTE PRO
               <br />
-              OFFICIEL
+              EXEMPLE
             </>
           }
           homeLinkProps={{
